@@ -1,4 +1,4 @@
-package http;
+package http.parser;
 import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

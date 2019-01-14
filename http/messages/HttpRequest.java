@@ -3,6 +3,8 @@ package http.messages;
 import java.io.InputStream;
 
 import http.*;
+import http.parser.HttpParsedRequestHeader;
+import http.parser.HttpParser;
 
 public abstract class HttpRequest {
 	//Constants

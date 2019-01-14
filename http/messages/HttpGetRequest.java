@@ -2,7 +2,7 @@ package http.messages;
 
 import java.io.InputStream;
 import http.HttpMethod;
-import http.HttpParsedRequestHeader;
+import http.parser.HttpParsedRequestHeader;
 
 public class HttpGetRequest extends HttpRequest{
 	//Constants

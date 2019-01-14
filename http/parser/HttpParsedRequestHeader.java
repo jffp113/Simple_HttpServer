@@ -1,4 +1,4 @@
-package http;
+package http.parser;
 
 public class HttpParsedRequestHeader {
 	private String method;

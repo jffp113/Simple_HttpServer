@@ -1,6 +1,8 @@
 package http.messages;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import http.*;
 import http.parser.HttpParsedRequestHeader;
@@ -16,7 +18,7 @@ public abstract class HttpRequest {
 	//Variables
 	private HttpMethod method;
 	private String resource, version;
-	
+	private Map<String,String> field;
 	
 	
 	//private 
@@ -25,11 +27,18 @@ public abstract class HttpRequest {
 		this.method = method;
 		this.resource = parsedHeader.getResource();
 		this.version = parsedHeader.getVersion();
-		parseInputStream(in);
+		field = new HashMap<String,String>();
+		parseRequestBodyByInputStream(in);
 	}
 	
-	private void parseInputStream(InputStream in) {
-		//TODO
+	private void parseRequestBodyByInputStream(InputStream in) {
+		String httpField;
+		String[] parsedHttpField;
+		while(!(httpField = HttpParser.readLine(in)).equals("")) {
+			parsedHttpField = HttpParser.parseFieldLine(httpField);
+			field.put(parsedHttpField[0], parsedHttpField[1]);
+		}
+		
 	}
 	
 	public static HttpRequest httpRequestFactory(InputStream in) {
@@ -49,6 +58,10 @@ public abstract class HttpRequest {
 		
 		return request;
 		
+	}
+	
+	public String getFieldValue(String key) {
+		return this.field.get(key);
 	}
 
 	

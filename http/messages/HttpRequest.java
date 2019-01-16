@@ -63,6 +63,18 @@ public abstract class HttpRequest {
 	public String getFieldValue(String key) {
 		return this.field.get(key);
 	}
+	
+	public HttpMethod getHttpMethod() {
+		return this.method;
+	}
+	
+	public String getResource() {
+		return this.resource;
+	}
+	
+	public String getVersion() {
+		return this.version;
+	}
 
 	
 	

@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import http.HttpMethod;
 import http.messages.HttpRequest;
 
 public class HttpRequestTests {
@@ -42,7 +43,13 @@ public class HttpRequestTests {
 		assertEquals("en-us",getRequest.getFieldValue("Accept-Language"));
 		assertEquals("gzip, deflate",getRequest.getFieldValue("Accept-Encoding"));
 		assertEquals("Keep-Alive",getRequest.getFieldValue("Connection"));
-		
+	}
+	
+	@Test
+	public void testGetRequestHeader() {
+		assertEquals(HttpMethod.GET,getRequest.getHttpMethod());
+		assertEquals("/hello.htm",getRequest.getResource());
+		assertEquals("HTTP/1.1",getRequest.getVersion());
 	}
 	
 	@After

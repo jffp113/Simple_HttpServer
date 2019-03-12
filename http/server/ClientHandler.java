@@ -3,7 +3,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Iterator;
 
-import http.HttpReplyClass;
 import http.messages.HttpReply;
 import http.messages.HttpRequest;
 
@@ -24,6 +23,18 @@ public class ClientHandler implements Runnable {
 		HttpRequest request = null;
 		HttpReply reply = null;
 		//TODO
+		
+		try(InputStream in = socket.getInputStream(); 
+				OutputStream out = socket.getOutputStream()) {
+			
+			request = this.getRequest(in);
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
